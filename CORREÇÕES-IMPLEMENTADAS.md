@@ -5,8 +5,8 @@
 ### ✅ **IMPLEMENTADO:**
 - **Login obrigatório** para acessar o portal admin
 - **Credenciais configuradas:**
-  - **Usuário:** `admin`
-  - **Senha:** `voucasar2025!`
+  - **Usuário:** `noivos`
+  - **Senha:** `voucasar2025`
 - **Sessão persistente** via localStorage
 - **Botão de logout** no header do admin
 - **Verificação de autenticação** antes de carregar dados
@@ -176,8 +176,8 @@ Adicionada a classe `login-field` aos campos de usuário e senha para excluí-lo
 - ✅ **Funcionalidade preservada**: Formulário principal ainda força maiúsculo
 
 ### 🔐 **Credenciais de Login**
-- **Usuário**: `admin` (agora em minúsculo)
-- **Senha**: `voucasar2025!` (agora case-sensitive)
+- **Usuário**: `noivos` (case-insensitive)
+- **Senha**: `voucasar2025` (case-sensitive)
 - **URL**: `http://localhost:3000/admin`
 
 ## 🚀 **STATUS: CORRIGIDO ✅**

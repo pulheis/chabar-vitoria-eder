@@ -19,7 +19,7 @@ export default function LoginForm({ onLogin }: LoginProps) {
     setError('');
 
     // Validação simples (aceita maiúsculas e minúsculas no username)
-    if (credentials.username.toLowerCase() === 'admin' && credentials.password === 'voucasar2025!') {
+    if (credentials.username.toLowerCase() === 'noivos' && credentials.password === 'voucasar2025') {
       // Salvar no localStorage para manter sessão
       localStorage.setItem('chabar_admin_auth', 'true');
       onLogin();
