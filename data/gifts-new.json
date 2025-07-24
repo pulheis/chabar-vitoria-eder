@@ -1,0 +1,702 @@
+[
+  {
+    "name": "Abridor de vinho",
+    "category": "🍽️ Cozinha e Utensílios",
+    "isAvailable": true,
+    "id": "gift_001",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Abridor de latas",
+    "category": "🍽️ Cozinha e Utensílios",
+    "isAvailable": true,
+    "id": "gift_002",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Amassador de alho",
+    "category": "🍽️ Cozinha e Utensílios",
+    "isAvailable": true,
+    "id": "gift_003",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Ralador",
+    "category": "🍽️ Cozinha e Utensílios",
+    "isAvailable": true,
+    "id": "gift_004",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Tábua de carne",
+    "category": "🍽️ Cozinha e Utensílios",
+    "isAvailable": true,
+    "id": "gift_005",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Colher de pau",
+    "category": "🍽️ Cozinha e Utensílios",
+    "isAvailable": true,
+    "id": "gift_006",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Concha de silicone",
+    "category": "🍽️ Cozinha e Utensílios",
+    "isAvailable": true,
+    "id": "gift_007",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Espátula de silicone",
+    "category": "🍽️ Cozinha e Utensílios",
+    "isAvailable": true,
+    "id": "gift_008",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Peneira",
+    "category": "🍽️ Cozinha e Utensílios",
+    "isAvailable": true,
+    "id": "gift_009",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Escorredor de macarrão",
+    "category": "🍽️ Cozinha e Utensílios",
+    "isAvailable": true,
+    "id": "gift_010",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Escorredor de arroz",
+    "category": "🍽️ Cozinha e Utensílios",
+    "isAvailable": true,
+    "id": "gift_011",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Cortador de pizza",
+    "category": "🍽️ Cozinha e Utensílios",
+    "isAvailable": true,
+    "id": "gift_012",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Tesoura de cozinha",
+    "category": "🍽️ Cozinha e Utensílios",
+    "isAvailable": true,
+    "id": "gift_013",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Faca de serra",
+    "category": "🍽️ Cozinha e Utensílios",
+    "isAvailable": true,
+    "id": "gift_014",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Faca de legumes",
+    "category": "🍽️ Cozinha e Utensílios",
+    "isAvailable": true,
+    "id": "gift_015",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Descascador de legumes",
+    "category": "🍽️ Cozinha e Utensílios",
+    "isAvailable": true,
+    "id": "gift_016",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Tábua de frios",
+    "category": "🍽️ Cozinha e Utensílios",
+    "isAvailable": true,
+    "id": "gift_017",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Petisqueira",
+    "category": "🍽️ Cozinha e Utensílios",
+    "isAvailable": true,
+    "id": "gift_018",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Jogo americano (conjunto)",
+    "category": "🍽️ Cozinha e Utensílios",
+    "isAvailable": true,
+    "id": "gift_019",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Porta guardanapo",
+    "category": "🍽️ Cozinha e Utensílios",
+    "isAvailable": true,
+    "id": "gift_020",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Jogo de copos",
+    "category": "🍽️ Cozinha e Utensílios",
+    "isAvailable": true,
+    "id": "gift_021",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Jogo de taças",
+    "category": "🍽️ Cozinha e Utensílios",
+    "isAvailable": true,
+    "id": "gift_022",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Copos de cerveja",
+    "category": "🍽️ Cozinha e Utensílios",
+    "isAvailable": true,
+    "id": "gift_023",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Copos de dose",
+    "category": "🍽️ Cozinha e Utensílios",
+    "isAvailable": true,
+    "id": "gift_024",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Balde de gelo",
+    "category": "🍽️ Cozinha e Utensílios",
+    "isAvailable": true,
+    "id": "gift_025",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Forma de gelo",
+    "category": "🍽️ Cozinha e Utensílios",
+    "isAvailable": true,
+    "id": "gift_026",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Jarra de água",
+    "category": "🍽️ Cozinha e Utensílios",
+    "isAvailable": true,
+    "id": "gift_027",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Garrafa térmica",
+    "category": "🍽️ Cozinha e Utensílios",
+    "isAvailable": true,
+    "id": "gift_028",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Coador de café",
+    "category": "🍽️ Cozinha e Utensílios",
+    "isAvailable": true,
+    "id": "gift_029",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Suporte para filtro de café",
+    "category": "🍽️ Cozinha e Utensílios",
+    "isAvailable": true,
+    "id": "gift_030",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Açucareiro",
+    "category": "🍽️ Cozinha e Utensílios",
+    "isAvailable": true,
+    "id": "gift_031",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Saleiro e pimenteiro",
+    "category": "🍽️ Cozinha e Utensílios",
+    "isAvailable": true,
+    "id": "gift_032",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Manteigueira",
+    "category": "🍽️ Cozinha e Utensílios",
+    "isAvailable": true,
+    "id": "gift_033",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Queijeira",
+    "category": "🍽️ Cozinha e Utensílios",
+    "isAvailable": true,
+    "id": "gift_034",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Boleira",
+    "category": "🍽️ Cozinha e Utensílios",
+    "isAvailable": true,
+    "id": "gift_035",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Porta-condimentos",
+    "category": "🍽️ Cozinha e Utensílios",
+    "isAvailable": true,
+    "id": "gift_036",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Fruteira",
+    "category": "🍽️ Cozinha e Utensílios",
+    "isAvailable": true,
+    "id": "gift_037",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Escorredor de louças",
+    "category": "🍽️ Cozinha e Utensílios",
+    "isAvailable": true,
+    "id": "gift_038",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Porta-detergente",
+    "category": "🍽️ Cozinha e Utensílios",
+    "isAvailable": true,
+    "id": "gift_039",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Pote de vidro com tampa de bambu",
+    "category": "🍽️ Cozinha e Utensílios",
+    "isAvailable": true,
+    "id": "gift_040",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Potes plásticos multiuso",
+    "category": "🍽️ Cozinha e Utensílios",
+    "isAvailable": true,
+    "id": "gift_041",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Potes herméticos",
+    "category": "🍽️ Cozinha e Utensílios",
+    "isAvailable": true,
+    "id": "gift_042",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Refratário de vidro",
+    "category": "🍽️ Cozinha e Utensílios",
+    "isAvailable": true,
+    "id": "gift_043",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Marinex com tampa",
+    "category": "🍽️ Cozinha e Utensílios",
+    "isAvailable": true,
+    "id": "gift_044",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Forma antiaderente para pudim",
+    "category": "🍽️ Cozinha e Utensílios",
+    "isAvailable": true,
+    "id": "gift_045",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Forma antiaderente retangular",
+    "category": "🍽️ Cozinha e Utensílios",
+    "isAvailable": true,
+    "id": "gift_046",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Forma redonda de bolo",
+    "category": "🍽️ Cozinha e Utensílios",
+    "isAvailable": true,
+    "id": "gift_047",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Assadeira de pizza",
+    "category": "🍽️ Cozinha e Utensílios",
+    "isAvailable": true,
+    "id": "gift_048",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Leiteira",
+    "category": "🍽️ Cozinha e Utensílios",
+    "isAvailable": true,
+    "id": "gift_049",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Canecas decoradas",
+    "category": "🍽️ Cozinha e Utensílios",
+    "isAvailable": true,
+    "id": "gift_050",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Pano de prato",
+    "category": "🧹 Limpeza e Lavanderia",
+    "isAvailable": true,
+    "id": "gift_051",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Pano de chão",
+    "category": "🧹 Limpeza e Lavanderia",
+    "isAvailable": true,
+    "id": "gift_052",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Rodo",
+    "category": "🧹 Limpeza e Lavanderia",
+    "isAvailable": true,
+    "id": "gift_053",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Vassoura",
+    "category": "🧹 Limpeza e Lavanderia",
+    "isAvailable": true,
+    "id": "gift_054",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Pá de lixo",
+    "category": "🧹 Limpeza e Lavanderia",
+    "isAvailable": true,
+    "id": "gift_055",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Balde",
+    "category": "🧹 Limpeza e Lavanderia",
+    "isAvailable": true,
+    "id": "gift_056",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Escova de limpeza",
+    "category": "🧹 Limpeza e Lavanderia",
+    "isAvailable": true,
+    "id": "gift_057",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Luvas de limpeza",
+    "category": "🧹 Limpeza e Lavanderia",
+    "isAvailable": true,
+    "id": "gift_058",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Esponja multiuso",
+    "category": "🧹 Limpeza e Lavanderia",
+    "isAvailable": true,
+    "id": "gift_059",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Porta sabão",
+    "category": "🧹 Limpeza e Lavanderia",
+    "isAvailable": true,
+    "id": "gift_060",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Saboneteira de pia",
+    "category": "🧹 Limpeza e Lavanderia",
+    "isAvailable": true,
+    "id": "gift_061",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Dispenser de detergente",
+    "category": "🧹 Limpeza e Lavanderia",
+    "isAvailable": true,
+    "id": "gift_062",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Kit de limpeza (sabão, desinfetante, etc.)",
+    "category": "🧹 Limpeza e Lavanderia",
+    "isAvailable": true,
+    "id": "gift_063",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Pregadores de roupa",
+    "category": "🧹 Limpeza e Lavanderia",
+    "isAvailable": true,
+    "id": "gift_064",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Cesto de roupa suja",
+    "category": "🧹 Limpeza e Lavanderia",
+    "isAvailable": true,
+    "id": "gift_065",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Varal portátil",
+    "category": "🧹 Limpeza e Lavanderia",
+    "isAvailable": true,
+    "id": "gift_066",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Cabides (kit)",
+    "category": "🧹 Limpeza e Lavanderia",
+    "isAvailable": true,
+    "id": "gift_067",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Suporte para vassouras",
+    "category": "🧹 Limpeza e Lavanderia",
+    "isAvailable": true,
+    "id": "gift_068",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Organizadores de armário",
+    "category": "🧹 Limpeza e Lavanderia",
+    "isAvailable": true,
+    "id": "gift_069",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Saco para roupa delicada",
+    "category": "🧹 Limpeza e Lavanderia",
+    "isAvailable": true,
+    "id": "gift_070",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Jogo de cama casal",
+    "category": "🛏️ Quarto & Banheiro",
+    "isAvailable": true,
+    "id": "gift_071",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Jogo de cama solteiro",
+    "category": "🛏️ Quarto & Banheiro",
+    "isAvailable": true,
+    "id": "gift_072",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Jogo de toalhas",
+    "category": "🛏️ Quarto & Banheiro",
+    "isAvailable": true,
+    "id": "gift_073",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Tapete para banheiro",
+    "category": "🛏️ Quarto & Banheiro",
+    "isAvailable": true,
+    "id": "gift_074",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Cortina de banheiro",
+    "category": "🛏️ Quarto & Banheiro",
+    "isAvailable": true,
+    "id": "gift_075",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Suporte para papel higiênico",
+    "category": "🛏️ Quarto & Banheiro",
+    "isAvailable": true,
+    "id": "gift_076",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Lixeira para banheiro",
+    "category": "🛏️ Quarto & Banheiro",
+    "isAvailable": true,
+    "id": "gift_077",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Porta escova de dente",
+    "category": "🛏️ Quarto & Banheiro",
+    "isAvailable": true,
+    "id": "gift_078",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Saboneteira de box",
+    "category": "🛏️ Quarto & Banheiro",
+    "isAvailable": true,
+    "id": "gift_079",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Espelho de parede",
+    "category": "🛏️ Quarto & Banheiro",
+    "isAvailable": true,
+    "id": "gift_080",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Travesseiro",
+    "category": "🛏️ Quarto & Banheiro",
+    "isAvailable": true,
+    "id": "gift_081",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Almofadas decorativas",
+    "category": "🛏️ Quarto & Banheiro",
+    "isAvailable": true,
+    "id": "gift_082",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Manta para sofá",
+    "category": "🛏️ Quarto & Banheiro",
+    "isAvailable": true,
+    "id": "gift_083",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Cobertor leve",
+    "category": "🛏️ Quarto & Banheiro",
+    "isAvailable": true,
+    "id": "gift_084",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Porta-jóias",
+    "category": "🛏️ Quarto & Banheiro",
+    "isAvailable": true,
+    "id": "gift_085",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Abajur de mesa",
+    "category": "🛏️ Quarto & Banheiro",
+    "isAvailable": true,
+    "id": "gift_086",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Relógio de parede",
+    "category": "🏠 Organização & Decoração",
+    "isAvailable": true,
+    "id": "gift_087",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Quadro decorativo",
+    "category": "🏠 Organização & Decoração",
+    "isAvailable": true,
+    "id": "gift_088",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Vaso de planta artificial",
+    "category": "🏠 Organização & Decoração",
+    "isAvailable": true,
+    "id": "gift_089",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Porta-chaves de parede",
+    "category": "🏠 Organização & Decoração",
+    "isAvailable": true,
+    "id": "gift_090",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Organizador de gavetas",
+    "category": "🏠 Organização & Decoração",
+    "isAvailable": true,
+    "id": "gift_091",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Caixa organizadora",
+    "category": "🏠 Organização & Decoração",
+    "isAvailable": true,
+    "id": "gift_092",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Suporte para temperos",
+    "category": "🏠 Organização & Decoração",
+    "isAvailable": true,
+    "id": "gift_093",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Tapete de entrada",
+    "category": "🏠 Organização & Decoração",
+    "isAvailable": true,
+    "id": "gift_094",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Tapete para cozinha",
+    "category": "🏠 Organização & Decoração",
+    "isAvailable": true,
+    "id": "gift_095",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Cortina para sala",
+    "category": "🏠 Organização & Decoração",
+    "isAvailable": true,
+    "id": "gift_096",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Lixeira para cozinha",
+    "category": "🏠 Organização & Decoração",
+    "isAvailable": true,
+    "id": "gift_097",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Suporte para papel toalha",
+    "category": "🏠 Organização & Decoração",
+    "isAvailable": true,
+    "id": "gift_098",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Porta-controle remoto",
+    "category": "🏠 Organização & Decoração",
+    "isAvailable": true,
+    "id": "gift_099",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  },
+  {
+    "name": "Velas aromáticas",
+    "category": "🏠 Organização & Decoração",
+    "isAvailable": true,
+    "id": "gift_100",
+    "createdAt": "2025-07-24T00:00:00.000Z"
+  }
+]

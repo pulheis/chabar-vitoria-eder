@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clear Admin Session</title>
+</head>
+<body>
+    <h1>Limpando sessão admin...</h1>
+    <script>
+        localStorage.removeItem('chabar_admin_auth');
+        alert('Sessão admin limpa! Redirecionando...');
+        window.location.href = '/admin';
+    </script>
+</body>
+</html>
