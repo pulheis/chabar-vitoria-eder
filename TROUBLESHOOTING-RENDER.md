@@ -2,14 +2,23 @@
 
 ## Problemas Comuns e Soluções
 
-### ❌ "Build failed because of webpack errors"
+### ❌ "Module not found: Can't resolve 'firebase/auth'"
 
-**Possíveis Causas:**
-1. Dependências incompatíveis com ambiente serverless
-2. Problemas com bibliotecas que usam Node.js APIs
-3. Configuração incorreta do webpack
+**Causa**: Arquivos não utilizados importando dependências Firebase não instaladas
 
-**Soluções Implementadas:**
+**Solução Aplicada:**
+```bash
+# Arquivos removidos:
+- src/app/setup/
+- src/app/configure/  
+- src/app/diagnostic/
+- src/lib/firebase.ts
+- src/lib/firestore.ts
+- src/lib/configure-firebase.ts
+- src/components/RSVPFormEnhanced.tsx
+```
+
+**Status**: ✅ **RESOLVIDO** - Build funcionando!
 
 #### 1. Remoção de Dependências Problemáticas
 ```bash
