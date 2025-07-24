@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { MapPin, Navigation, Gift as GiftIcon, CheckCircle, AlertCircle, Heart, Wine, Sun, Instagram } from 'lucide-react';
 import { Gift } from '@/types';
 
@@ -40,16 +40,7 @@ const RSVPFormSimple: React.FC = () => {
 
   const precolandiaUrl = 'https://www.precolandia.com.br/gift-list-details/view/cha-bar-edinho-e-vi';
 
-  useEffect(() => {
-    loadGifts();
-    
-    // Recarregar presentes a cada 30 segundos para detectar mudanças
-    const interval = setInterval(loadGifts, 30000);
-    
-    return () => clearInterval(interval);
-  }, []);
-
-  const loadGifts = async () => {
+  const loadGifts = useCallback(async () => {
     try {
       const response = await fetch('/api/gifts');
       if (response.ok) {
@@ -78,7 +69,16 @@ const RSVPFormSimple: React.FC = () => {
     } catch (error) {
       console.error('Erro ao carregar presentes:', error);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    loadGifts();
+    
+    // Recarregar presentes a cada 30 segundos para detectar mudanças
+    const interval = setInterval(loadGifts, 30000);
+    
+    return () => clearInterval(interval);
+  }, [loadGifts]);
 
   // Filtrar presentes baseado no texto de busca
   useEffect(() => {

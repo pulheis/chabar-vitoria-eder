@@ -7,8 +7,8 @@ const inter = Inter({
   display: "swap",
 });
 
-// Importar a fonte Shorelines Script (usando uma fonte cursiva similar do Google Fonts)
-// Como Shorelines Scripts pode não estar disponível no Google Fonts, vamos usar uma alternativa elegante
+// Fonte cursiva para elementos decorativos
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const dancingScript = {
   fontFamily: "'Dancing Script', cursive",
 };

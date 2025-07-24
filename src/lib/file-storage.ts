@@ -222,7 +222,7 @@ export const initializeDefaultGifts = (): { success: boolean; message: string } 
 // FUNÇÕES DE MIGRAÇÃO
 // ===============================
 
-export const migrateFromLocalStorage = (req: Request): { success: boolean; message: string; details?: any } => {
+export const migrateFromLocalStorage = (_req: Request): { success: boolean; message: string; details?: unknown } => {
   try {
     // Esta função será chamada via API para migrar dados do localStorage
     // Os dados serão enviados no body da requisição

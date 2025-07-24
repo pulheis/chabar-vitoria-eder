@@ -33,7 +33,7 @@ const QRCodeDisplay: React.FC<QRCodeDisplayProps> = ({ url, title = "Acesse pelo
       setCopied(true);
       toast.success('Link copiado!');
       setTimeout(() => setCopied(false), 2000);
-    } catch (err) {
+    } catch {
       toast.error('Erro ao copiar link');
     }
   };
