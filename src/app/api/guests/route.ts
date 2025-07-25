@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getGuests, addGuest, deleteGuest, updateGuest } from '@/lib/file-storage';
+import { getGuests, addGuest, deleteGuest, updateGuest } from '@/lib/sheets-storage';
 import { Guest } from '@/types';
 
 export async function GET() {
   try {
-    const guests = getGuests();
+    const guests = await getGuests();
     return NextResponse.json(guests);
   } catch (error) {
     console.error('Error reading guests:', error);
@@ -16,8 +16,8 @@ export async function POST(request: NextRequest) {
   try {
     const guestData: Omit<Guest, 'id' | 'createdAt'> = await request.json();
     
-    const guestId = addGuest(guestData);
-    const guests = getGuests();
+    const guestId = await addGuest(guestData);
+    const guests = await getGuests();
     const newGuest = guests.find((g: Guest) => g.id === guestId);
 
     return NextResponse.json(newGuest, { status: 201 });
@@ -37,14 +37,14 @@ export async function PUT(request: NextRequest) {
       return NextResponse.json({ error: 'Guest ID is required' }, { status: 400 });
     }
 
-    const success = updateGuest(id, updateData);
+    const success = await updateGuest(id, updateData);
     
     if (!success) {
       return NextResponse.json({ error: 'Guest not found' }, { status: 404 });
     }
 
     // Buscar e retornar o convidado atualizado
-    const guests = getGuests();
+    const guests = await getGuests();
     const updatedGuest = guests.find((g: Guest) => g.id === id);
 
     return NextResponse.json(updatedGuest);
@@ -63,7 +63,7 @@ export async function DELETE(request: NextRequest) {
       return NextResponse.json({ error: 'Guest ID is required' }, { status: 400 });
     }
 
-    const success = deleteGuest(id);
+    const success = await deleteGuest(id);
     
     if (!success) {
       return NextResponse.json({ error: 'Guest not found' }, { status: 404 });

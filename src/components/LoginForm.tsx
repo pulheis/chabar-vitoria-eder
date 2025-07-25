@@ -18,13 +18,30 @@ export default function LoginForm({ onLogin }: LoginProps) {
     setLoading(true);
     setError('');
 
-    // Validação simples (aceita maiúsculas e minúsculas no username)
-    if (credentials.username.toLowerCase() === 'noivos' && credentials.password === 'voucasar2025') {
-      // Salvar no localStorage para manter sessão
-      localStorage.setItem('chabar_admin_auth', 'true');
-      onLogin();
-    } else {
-      setError('Usuário ou senha incorretos');
+    try {
+      // Buscar credenciais do Google Sheets
+      const response = await fetch('/api/admin/credentials');
+      const adminCredentials = await response.json();
+
+      // Validação (aceita maiúsculas e minúsculas no username)
+      if (credentials.username.toLowerCase() === adminCredentials.username.toLowerCase() && 
+          credentials.password === adminCredentials.password) {
+        // Salvar no localStorage para manter sessão
+        localStorage.setItem('chabar_admin_auth', 'true');
+        onLogin();
+      } else {
+        setError('Usuário ou senha incorretos');
+      }
+    } catch (error) {
+      console.error('Error fetching credentials:', error);
+      
+      // Fallback para credenciais hardcoded em caso de erro
+      if (credentials.username.toLowerCase() === 'noivos' && credentials.password === 'voucasar2025') {
+        localStorage.setItem('chabar_admin_auth', 'true');
+        onLogin();
+      } else {
+        setError('Usuário ou senha incorretos');
+      }
     }
     
     setLoading(false);

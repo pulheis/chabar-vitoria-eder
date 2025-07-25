@@ -1,10 +1,10 @@
 import { NextResponse } from 'next/server';
-import { exportData } from '@/lib/file-storage';
+import { exportData } from '@/lib/sheets-storage';
 import { jsPDF } from 'jspdf';
 
 export async function GET() {
   try {
-    const data = exportData();
+    const data = await exportData();
     
     // Criar documento PDF
     const doc = new jsPDF();
