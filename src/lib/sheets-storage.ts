@@ -107,9 +107,9 @@ const retryOperation = async <T>(
 };
 
 // Converter dados para formato de planilha
-const objectToRow = (obj: Record<string, unknown>, headers: string[]): string[] => {
+const objectToRow = (obj: Record<string, unknown> | Guest | Gift, headers: string[]): string[] => {
   return headers.map(header => {
-    const value = obj[header];
+    const value = (obj as Record<string, unknown>)[header];
     if (value === null || value === undefined) return '';
     if (typeof value === 'object') return JSON.stringify(value);
     return String(value);
@@ -208,7 +208,7 @@ export const getGuests = async (): Promise<Guest[]> => {
     const result = await retryOperation(async () => {
       const response = await sheets.spreadsheets.values.get({
         spreadsheetId: SPREADSHEET_ID,
-        range: `${SHEETS_CONFIG.GUESTS}!A:H`,
+        range: `${SHEETS_CONFIG.GUESTS}!A:K`,
       });
       
       const values = response.data.values;
@@ -221,7 +221,7 @@ export const getGuests = async (): Promise<Guest[]> => {
         const row = values[i];
         if (row.length === 0) continue;
         
-        const guest = rowToObject(row, headers) as Guest;
+        const guest = rowToObject(row, headers) as unknown as Guest;
         guests.push(guest);
       }
       
@@ -250,7 +250,7 @@ export const addGuest = async (guestData: Omit<Guest, 'id' | 'createdAt'>): Prom
     await retryOperation(async () => {
       await sheets.spreadsheets.values.append({
         spreadsheetId: SPREADSHEET_ID,
-        range: `${SHEETS_CONFIG.GUESTS}!A:H`,
+        range: `${SHEETS_CONFIG.GUESTS}!A:K`,
         valueInputOption: 'RAW',
         requestBody: {
           values: [row],
@@ -280,7 +280,7 @@ export const updateGuest = async (id: string, updates: Partial<Guest>): Promise<
     await retryOperation(async () => {
       await sheets.spreadsheets.values.update({
         spreadsheetId: SPREADSHEET_ID,
-        range: `${SHEETS_CONFIG.GUESTS}!A${index + 2}:H${index + 2}`,
+        range: `${SHEETS_CONFIG.GUESTS}!A${index + 2}:K${index + 2}`,
         valueInputOption: 'RAW',
         requestBody: {
           values: [row],
@@ -355,7 +355,7 @@ export const getGifts = async (): Promise<Gift[]> => {
         const row = values[i];
         if (row.length === 0) continue;
         
-        const gift = rowToObject(row, headers) as Gift;
+        const gift = rowToObject(row, headers) as unknown as Gift;
         gifts.push(gift);
       }
       
@@ -677,7 +677,7 @@ export const initializeGoogleSheets = async (): Promise<{ success: boolean; mess
       // Adicionar cabeçalhos
       await sheets.spreadsheets.values.update({
         spreadsheetId: SPREADSHEET_ID,
-        range: `${SHEETS_CONFIG.GUESTS}!A1:H1`,
+        range: `${SHEETS_CONFIG.GUESTS}!A1:K1`,
         valueInputOption: 'RAW',
         requestBody: {
           values: [['id', 'name', 'rg', 'licensePlate', 'isAttending', 'companions', 'willBringGift', 'selectedGift', 'selectedGifts', 'message', 'createdAt']],
