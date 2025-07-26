@@ -19,6 +19,7 @@ export default function AdminPage() {
   // Authentication state
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [authLoading, setAuthLoading] = useState(true);
+  const [currentUser, setCurrentUser] = useState<string>('Admin');
   
   // Dashboard data
   const [guests, setGuests] = useState<Guest[]>([]);
@@ -35,7 +36,9 @@ export default function AdminPage() {
   useEffect(() => {
     const checkAuth = () => {
       const isAuth = localStorage.getItem('chabar_admin_auth') === 'true';
+      const savedUser = localStorage.getItem('chabar_admin_user') || 'Admin';
       setIsAuthenticated(isAuth);
+      setCurrentUser(savedUser);
       setAuthLoading(false);
     };
     
@@ -55,7 +58,9 @@ export default function AdminPage() {
 
   const handleLogout = () => {
     localStorage.removeItem('chabar_admin_auth');
+    localStorage.removeItem('chabar_admin_user');
     setIsAuthenticated(false);
+    setCurrentUser('Admin');
     setGuests([]);
     setGifts([]);
   };
@@ -333,7 +338,7 @@ export default function AdminPage() {
               </p>
             </div>
             <div className="flex items-center space-x-4">
-              <span className="text-sm text-gray-500">Logado como admin</span>
+              <span className="text-sm text-gray-500">Olá, {currentUser}!</span>
               <button
                 onClick={handleLogout}
                 className="flex items-center space-x-2 text-sm text-gray-600 hover:text-gray-800 transition-colors"

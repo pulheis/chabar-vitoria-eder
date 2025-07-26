@@ -129,7 +129,7 @@ export const releaseAllGiftsFromGuest = async (guestName: string): Promise<numbe
 // FUNÇÕES DE AUTENTICAÇÃO
 // ===============================
 
-export const validateLogin = async (username: string, password: string): Promise<boolean> => {
+export const validateLogin = async (username: string, password: string): Promise<{ valid: boolean; user?: string }> => {
   // Primeiro tentar Google Sheets
   if (USE_GOOGLE_SHEETS()) {
     try {
@@ -141,15 +141,21 @@ export const validateLogin = async (username: string, password: string): Promise
   
   // Fallback local SEMPRE funcional - credenciais garantidas
   const validCredentials = [
-    { username: 'eder', password: 'Noivo!' },
-    { username: 'vitoria', password: 'Noiva!' },
+    { username: 'eder', password: 'Noivo!', displayName: 'Éder' },
+    { username: 'vitoria', password: 'Noiva!', displayName: 'Vitória' },
     // Manter credenciais antigas como backup temporário
-    { username: 'noivos', password: 'voucasar2025' }
+    { username: 'noivos', password: 'voucasar2025', displayName: 'Admin' }
   ];
   
-  return validCredentials.some(cred => 
-    cred.username === username.toLowerCase() && cred.password === password
+  const foundUser = validCredentials.find(cred => 
+    cred.username.toLowerCase() === username.toLowerCase() && cred.password === password
   );
+  
+  if (foundUser) {
+    return { valid: true, user: foundUser.displayName };
+  }
+  
+  return { valid: false };
 };
 
 // ===============================

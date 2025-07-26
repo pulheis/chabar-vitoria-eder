@@ -13,11 +13,12 @@ export async function POST(request: NextRequest) {
     }
 
     // Usar a função de validação que consulta Google Sheets
-    const isValid = await validateLogin(username.toLowerCase(), password);
+    const loginResult = await validateLogin(username.toLowerCase(), password);
 
     return NextResponse.json({
-      valid: isValid,
-      message: isValid ? 'Login successful' : 'Invalid credentials'
+      valid: loginResult.valid,
+      user: loginResult.user,
+      message: loginResult.valid ? 'Login successful' : 'Invalid credentials'
     });
 
   } catch (error) {

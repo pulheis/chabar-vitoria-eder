@@ -303,13 +303,20 @@ class GoogleSheetsService {
   // FUNÇÕES DE AUTENTICAÇÃO
   // ===============================
 
-  async validateLogin(username: string, password: string): Promise<boolean> {
+  async validateLogin(username: string, password: string): Promise<{ valid: boolean; user?: string }> {
     const rows = await this.readSheet(SHEETS.CONFIG);
-    if (rows.length <= 1) return false;
+    if (rows.length <= 1) return { valid: false };
 
     // Fazer busca case-insensitive
     const configRow = rows.find(row => row[0]?.toLowerCase() === username.toLowerCase());
-    return !!(configRow && configRow[1] === password);
+    if (configRow && configRow[1] === password) {
+      // Retornar o nome formatado baseado no username
+      const userDisplayName = username.toLowerCase() === 'eder' ? 'Éder' : 
+                             username.toLowerCase() === 'vitoria' ? 'Vitória' : 
+                             'Admin';
+      return { valid: true, user: userDisplayName };
+    }
+    return { valid: false };
   }
 
   // ===============================

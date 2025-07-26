@@ -36,6 +36,7 @@ export default function LoginForm({ onLogin }: LoginProps) {
       if (response.ok && result.valid) {
         // Salvar no localStorage para manter sessão
         localStorage.setItem('chabar_admin_auth', 'true');
+        localStorage.setItem('chabar_admin_user', result.user || 'Admin');
         onLogin();
       } else {
         setError('Usuário ou senha incorretos');
