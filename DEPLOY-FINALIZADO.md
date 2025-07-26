@@ -1,9 +1,11 @@
 # Deploy Finalizado - Chá Bar Vitória & Éder
 
 ## ✅ Status Atual
-- **Build no Render**: ✅ SUCESSO (após remoção do diretório admin-new problemático)
+- **Build no Render**: ✅ SUCESSO (após correção de problemas TypeScript)
 - **Deploy**: ✅ ATIVO em https://chabar-vitoria-eder.onrender.com
 - **Migração Google Sheets**: ✅ IMPLEMENTADA com fallback local
+- **Admin Principal**: ✅ FUNCIONAL (/admin)
+- **Admin Simples**: ✅ RECRIADO (/admin-simple)
 
 ## 📋 Próximos Testes Necessários
 
@@ -35,6 +37,7 @@ Usuários válidos:
 
 ### Build/Deploy
 - ✅ Removido diretório `admin-new` com erros TypeScript
+- ✅ Recriado `admin-simple` com código limpo e funcional
 - ✅ Configurado `next.config.ts` para ignorar erros ESLint no build
 - ✅ Força push para GitHub com todas correções
 
@@ -58,7 +61,8 @@ Usuários válidos:
 
 ## 🚀 URLs Importantes
 - **App**: https://chabar-vitoria-eder.onrender.com
-- **Admin**: https://chabar-vitoria-eder.onrender.com/admin
+- **Admin Principal**: https://chabar-vitoria-eder.onrender.com/admin
+- **Admin Simples**: https://chabar-vitoria-eder.onrender.com/admin-simple
 - **GitHub**: https://github.com/pulheis/chabar-vitoria-eder
 - **Render Dashboard**: https://dashboard.render.com/web/srv-ctu30k2j1k6c739v5u40
 
