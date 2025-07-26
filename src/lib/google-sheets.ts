@@ -19,8 +19,8 @@ const GIFT_HEADERS = ['id', 'name', 'description', 'isAvailable', 'selectedBy', 
 const CONFIG_HEADERS = ['username', 'password', 'lastUpdate'];
 
 class GoogleSheetsService {
-  private sheets: any;
-  private auth: any;
+  private sheets: any = null;
+  private auth: any = null;
 
   constructor() {
     this.initializeAuth();
@@ -47,7 +47,7 @@ class GoogleSheetsService {
   // FUNÇÕES AUXILIARES
   // ===============================
 
-  private async readSheet(sheetName: string): Promise<any[][]> {
+  private async readSheet(sheetName: string): Promise<string[][]> {
     try {
       const response = await this.sheets.spreadsheets.values.get({
         spreadsheetId: GOOGLE_SPREADSHEET_ID,
@@ -61,7 +61,7 @@ class GoogleSheetsService {
     }
   }
 
-  private async writeSheet(sheetName: string, values: any[][]): Promise<boolean> {
+  private async writeSheet(sheetName: string, values: string[][]): Promise<boolean> {
     try {
       await this.sheets.spreadsheets.values.update({
         spreadsheetId: GOOGLE_SPREADSHEET_ID,
@@ -78,7 +78,7 @@ class GoogleSheetsService {
     }
   }
 
-  private async appendToSheet(sheetName: string, values: any[]): Promise<boolean> {
+  private async appendToSheet(sheetName: string, values: (string | undefined)[]): Promise<boolean> {
     try {
       await this.sheets.spreadsheets.values.append({
         spreadsheetId: GOOGLE_SPREADSHEET_ID,
