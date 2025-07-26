@@ -60,10 +60,37 @@ EDER_WHATSAPP=+5511999999999
 VITORIA_WHATSAPP=+5511888888888
 ```
 
-#### **4. Formatos importantes:**
+#### **4. Formatos importantes (CRÍTICO):**
+
+⚠️ **ATENÇÃO: Os formatos devem estar EXATOS:**
+
 - **Número Twilio:** `whatsapp:+14155552345` (COM "whatsapp:")
-- **Números noivos:** `+5511999999999` (SEM "whatsapp:")
-- **Código país:** +55 (Brasil)
+- **Números noivos:** `+5511999999999` (COM "+" e código do país)
+- **Código país Brasil:** +55
+- **DDD:** 11, 21, 85, etc.
+- **Número completo:** +55 + DDD + número (ex: +5511987654321)
+
+**❌ FORMATOS INCORRETOS que causam erro 21910:**
+```bash
+# ERRADO - Sem código do país
+EDER_WHATSAPP=11987654321
+
+# ERRADO - Sem o +
+EDER_WHATSAPP=5511987654321
+
+# ERRADO - Com whatsapp: (só o Twilio usa)
+EDER_WHATSAPP=whatsapp:+5511987654321
+```
+
+**✅ FORMATOS CORRETOS:**
+```bash
+# Twilio WhatsApp Sandbox (COM whatsapp:)
+TWILIO_WHATSAPP_NUMBER=whatsapp:+14155552345
+
+# Números dos noivos (SEM whatsapp:, mas COM + e código país)
+EDER_WHATSAPP=+5511987654321
+VITORIA_WHATSAPP=+5511123456789
+```
 
 ### **Como testar:**
 
@@ -77,6 +104,42 @@ VITORIA_WHATSAPP=+5511888888888
 - Toda confirmação de presença enviará WhatsApp automaticamente
 - Não interfere no funcionamento se Twilio não estiver configurado
 - Logs aparecerão no console do servidor
+
+## 🔧 **TROUBLESHOOTING**
+
+### **Erro: "Invalid From and To pair" (Código 21910)**
+
+**Causa:** Formato incorreto dos números de telefone.
+
+**Solução:**
+1. Verifique se `TWILIO_WHATSAPP_NUMBER` tem o formato: `whatsapp:+14155552345`
+2. Verifique se números dos noivos têm formato: `+5511987654321`
+3. Use o portal admin → Configurações → "Verificar Configuração"
+
+**Exemplo correto:**
+```bash
+TWILIO_WHATSAPP_NUMBER=whatsapp:+14155552345
+EDER_WHATSAPP=+5511987654321
+VITORIA_WHATSAPP=+5511123456789
+```
+
+### **Erro: "The number +5511XXXXXXX is unverified"**
+
+**Causa:** Número não foi verificado no WhatsApp Sandbox.
+
+**Solução:**
+1. Acesse o Twilio Console → Messaging → WhatsApp sandbox
+2. Envie "join" para o número do sandbox pelo WhatsApp
+3. Adicione os números de teste no sandbox
+
+### **Erro: "Authentication failed"**
+
+**Causa:** Credenciais incorretas do Twilio.
+
+**Solução:**
+1. Verifique `TWILIO_ACCOUNT_SID` e `TWILIO_AUTH_TOKEN`
+2. Copie direto do painel do Twilio (Account Info)
+3. Não confunda Account SID com Auth Token
 
 ### **Deploy no Render:**
 
