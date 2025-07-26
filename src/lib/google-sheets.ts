@@ -170,10 +170,26 @@ class GoogleSheetsService {
   }
 
   async deleteGuest(id: string): Promise<boolean> {
-    const guests = await this.getGuests();
-    const filteredGuests = guests.filter(g => g.id !== id);
+    console.log('🔍 Google Sheets deleteGuest - ID to delete:', id, typeof id);
     
-    if (filteredGuests.length === guests.length) return false;
+    const guests = await this.getGuests();
+    console.log('🔍 Google Sheets deleteGuest - Total guests before:', guests.length);
+    console.log('🔍 Google Sheets deleteGuest - Guest IDs:', guests.map(g => `${g.id} (${typeof g.id})`));
+    
+    const filteredGuests = guests.filter(g => {
+      const shouldKeep = g.id !== id;
+      if (!shouldKeep) {
+        console.log('🔍 Found guest to delete:', g.id, g.name);
+      }
+      return shouldKeep;
+    });
+    
+    console.log('🔍 Google Sheets deleteGuest - Total guests after filter:', filteredGuests.length);
+    
+    if (filteredGuests.length === guests.length) {
+      console.log('🔍 Google Sheets deleteGuest - No guest was filtered out (not found)');
+      return false;
+    }
 
     const rows: string[][] = [GUEST_HEADERS, ...filteredGuests.map(guest => [
       guest.id ?? '',
@@ -189,7 +205,10 @@ class GoogleSheetsService {
       guest.createdAt.toISOString()
     ])];
 
-    return await this.writeSheet(SHEETS.GUESTS, rows);
+    const writeResult = await this.writeSheet(SHEETS.GUESTS, rows);
+    console.log('🔍 Google Sheets deleteGuest - Write result:', writeResult);
+    
+    return writeResult;
   }
 
   // ===============================
