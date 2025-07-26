@@ -3,13 +3,6 @@
 import React, { useState, useEffect } from 'react';
 import { MapPin, Navigation, Gift as GiftIcon, Loader2, CheckCircle, AlertCircle } from 'lucide-react';
 import toast, { Toaster } from 'react-hot-toast';
-import { 
-  addGuest, 
-  getAvailableGifts, 
-  updateGift, 
-  testFirebaseConnection,
-  initializeDefaultGifts 
-} from '@/lib/firestore';
 import { Gift } from '@/types';
 
 interface FormData {
@@ -42,31 +35,26 @@ const RSVPFormEnhanced: React.FC = () => {
 
   const precolandiaUrl = 'https://www.precolandia.com.br/lista/eder-vitoria';
 
-  // Teste de conexão Firebase e inicialização
+  // Inicialização - carregar presentes via API
   useEffect(() => {
     const initializeApp = async () => {
       try {
         setFirebaseStatus('testing');
-        const connectionTest = await testFirebaseConnection();
         
-        if (connectionTest.success) {
+        // Carregar presentes via API
+        const response = await fetch('/api/gifts');
+        if (response.ok) {
+          const apiGifts = await response.json();
+          setGifts(apiGifts);
           setFirebaseStatus('connected');
           setUseFirebase(true);
-          
-          // Inicializar presentes padrão se necessário
-          await initializeDefaultGifts();
-          
-          // Carregar presentes do Firebase
-          const firebaseGifts = await getAvailableGifts();
-          setGifts(firebaseGifts);
-          console.log('Presentes carregados do Firebase:', firebaseGifts);
-          
-          toast.success('Conectado ao Firebase!');
+          console.log('Presentes carregados via API:', apiGifts);
+          toast.success('Conectado ao sistema!');
         } else {
-          throw new Error(connectionTest.message);
+          throw new Error('Falha ao carregar presentes');
         }
       } catch (error) {
-        console.error('Firebase não disponível, usando modo offline:', error);
+        console.error('API não disponível, usando modo offline:', error);
         setFirebaseStatus('offline');
         setUseFirebase(false);
         
@@ -143,22 +131,39 @@ const RSVPFormEnhanced: React.FC = () => {
     
     try {
       if (useFirebase && firebaseStatus === 'connected') {
-        // Salvar no Firebase
-        const guestId = await addGuest({
-          name: form.name,
-          isAttending: form.isAttending,
-          companions: form.companions,
-          willBringGift: form.willBringGift,
-          selectedGift: form.selectedGift,
-          message: form.message
+        // Salvar via API
+        const guestResponse = await fetch('/api/guests', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: form.name,
+            isAttending: form.isAttending,
+            companions: form.companions,
+            willBringGift: form.willBringGift,
+            selectedGift: form.selectedGift,
+            message: form.message
+          })
         });
+
+        if (!guestResponse.ok) {
+          throw new Error('Falha ao salvar confirmação');
+        }
 
         // Se um presente foi selecionado, marcar como indisponível
         if (form.selectedGift && form.selectedGift !== '') {
-          await updateGift(form.selectedGift, {
-            isAvailable: false,
-            selectedBy: form.name
+          const giftResponse = await fetch('/api/gifts', {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              id: form.selectedGift,
+              isAvailable: false,
+              selectedBy: form.name
+            })
           });
+
+          if (!giftResponse.ok) {
+            console.error('Falha ao atualizar presente');
+          }
         }
 
         toast.success('Confirmação enviada com sucesso!');
