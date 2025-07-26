@@ -1,11 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getGuests, addGuest, deleteGuest, updateGuest } from '@/lib/file-storage';
+import { getGuests, addGuest, deleteGuest, updateGuest } from '@/lib/storage';
 import { Guest } from '@/types';
 
 export async function GET() {
   try {
-    const guests = getGuests();
-    return NextResponse.json(guests);
+    const guests = await getGuests();
+    // Garantir que as datas sejam serializáveis
+    const serializedGuests = guests.map(guest => ({
+      ...guest,
+      createdAt: guest.createdAt instanceof Date && !isNaN(guest.createdAt.getTime()) 
+        ? guest.createdAt.toISOString() 
+        : (typeof guest.createdAt === 'string' ? guest.createdAt : new Date().toISOString())
+    }));
+    return NextResponse.json(serializedGuests);
   } catch (error) {
     console.error('Error reading guests:', error);
     return NextResponse.json({ error: 'Failed to read guests' }, { status: 500 });
@@ -16,11 +23,19 @@ export async function POST(request: NextRequest) {
   try {
     const guestData: Omit<Guest, 'id' | 'createdAt'> = await request.json();
     
-    const guestId = addGuest(guestData);
-    const guests = getGuests();
+    const guestId = await addGuest(guestData);
+    const guests = await getGuests();
     const newGuest = guests.find((g: Guest) => g.id === guestId);
 
-    return NextResponse.json(newGuest, { status: 201 });
+    // Garantir que as datas sejam serializáveis
+    const serializedGuest = newGuest ? {
+      ...newGuest,
+      createdAt: newGuest.createdAt instanceof Date && !isNaN(newGuest.createdAt.getTime()) 
+        ? newGuest.createdAt.toISOString() 
+        : (typeof newGuest.createdAt === 'string' ? newGuest.createdAt : new Date().toISOString())
+    } : null;
+
+    return NextResponse.json(serializedGuest, { status: 201 });
   } catch (error) {
     console.error('Error creating guest:', error);
     return NextResponse.json({ error: 'Failed to create guest' }, { status: 500 });
@@ -37,17 +52,25 @@ export async function PUT(request: NextRequest) {
       return NextResponse.json({ error: 'Guest ID is required' }, { status: 400 });
     }
 
-    const success = updateGuest(id, updateData);
+    const success = await updateGuest(id, updateData);
     
     if (!success) {
       return NextResponse.json({ error: 'Guest not found' }, { status: 404 });
     }
 
     // Buscar e retornar o convidado atualizado
-    const guests = getGuests();
+    const guests = await getGuests();
     const updatedGuest = guests.find((g: Guest) => g.id === id);
 
-    return NextResponse.json(updatedGuest);
+    // Garantir que as datas sejam serializáveis
+    const serializedGuest = updatedGuest ? {
+      ...updatedGuest,
+      createdAt: updatedGuest.createdAt instanceof Date && !isNaN(updatedGuest.createdAt.getTime()) 
+        ? updatedGuest.createdAt.toISOString() 
+        : (typeof updatedGuest.createdAt === 'string' ? updatedGuest.createdAt : new Date().toISOString())
+    } : null;
+
+    return NextResponse.json(serializedGuest);
   } catch (error) {
     console.error('Error updating guest:', error);
     return NextResponse.json({ error: 'Failed to update guest' }, { status: 500 });
@@ -63,7 +86,7 @@ export async function DELETE(request: NextRequest) {
       return NextResponse.json({ error: 'Guest ID is required' }, { status: 400 });
     }
 
-    const success = deleteGuest(id);
+    const success = await deleteGuest(id);
     
     if (!success) {
       return NextResponse.json({ error: 'Guest not found' }, { status: 404 });

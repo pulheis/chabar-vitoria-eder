@@ -1,9 +1,9 @@
 import { NextResponse } from 'next/server';
-import { initializeDefaultGifts } from '@/lib/file-storage';
+import { initializeDefaultGifts } from '@/lib/storage';
 
 export async function POST() {
   try {
-    const result = initializeDefaultGifts();
+    const result = await initializeDefaultGifts();
     
     if (result.success) {
       return NextResponse.json(result, { status: 201 });
