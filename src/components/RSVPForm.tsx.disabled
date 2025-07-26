@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { RSVPFormData, Gift } from '@/types';
-import { addGuest, getAvailableGifts, updateGift } from '@/lib/firestore';
 import toast from 'react-hot-toast';
 import * as QRCode from 'qrcode';
 import { Gift as GiftIcon, MapPin, Navigation, Heart } from 'lucide-react';

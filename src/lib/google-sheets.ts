@@ -152,17 +152,17 @@ class GoogleSheetsService {
 
     guests[index] = { ...guests[index], ...updates };
     
-    const rows = [GUEST_HEADERS, ...guests.map(guest => [
-      guest.id,
-      guest.name,
-      guest.rg || '',
-      guest.licensePlate || '',
+    const rows: string[][] = [GUEST_HEADERS, ...guests.map(guest => [
+      guest.id ?? '',
+      guest.name ?? '',
+      guest.rg ?? '',
+      guest.licensePlate ?? '',
       guest.isAttending.toString(),
-      guest.companions?.toString() || '0',
+      guest.companions?.toString() ?? '0',
       guest.willBringGift.toString(),
-      guest.selectedGift || '',
-      JSON.stringify(guest.selectedGifts || []),
-      guest.message || '',
+      guest.selectedGift ?? '',
+      JSON.stringify(guest.selectedGifts ?? []),
+      guest.message ?? '',
       guest.createdAt.toISOString()
     ])];
 
@@ -175,17 +175,17 @@ class GoogleSheetsService {
     
     if (filteredGuests.length === guests.length) return false;
 
-    const rows = [GUEST_HEADERS, ...filteredGuests.map(guest => [
-      guest.id,
-      guest.name,
-      guest.rg || '',
-      guest.licensePlate || '',
+    const rows: string[][] = [GUEST_HEADERS, ...filteredGuests.map(guest => [
+      guest.id ?? '',
+      guest.name ?? '',
+      guest.rg ?? '',
+      guest.licensePlate ?? '',
       guest.isAttending.toString(),
-      guest.companions?.toString() || '0',
+      guest.companions?.toString() ?? '0',
       guest.willBringGift.toString(),
-      guest.selectedGift || '',
-      JSON.stringify(guest.selectedGifts || []),
-      guest.message || '',
+      guest.selectedGift ?? '',
+      JSON.stringify(guest.selectedGifts ?? []),
+      guest.message ?? '',
       guest.createdAt.toISOString()
     ])];
 
@@ -239,12 +239,12 @@ class GoogleSheetsService {
 
     gifts[index] = { ...gifts[index], ...updates };
     
-    const rows = [GIFT_HEADERS, ...gifts.map(gift => [
-      gift.id,
-      gift.name,
-      gift.description,
+    const rows: string[][] = [GIFT_HEADERS, ...gifts.map(gift => [
+      gift.id ?? '',
+      gift.name ?? '',
+      gift.description ?? '',
       gift.isAvailable.toString(),
-      gift.selectedBy || '',
+      gift.selectedBy ?? '',
       gift.createdAt.toISOString()
     ])];
 
@@ -257,12 +257,12 @@ class GoogleSheetsService {
     
     if (filteredGifts.length === gifts.length) return false;
 
-    const rows = [GIFT_HEADERS, ...filteredGifts.map(gift => [
-      gift.id,
-      gift.name,
-      gift.description,
+    const rows: string[][] = [GIFT_HEADERS, ...filteredGifts.map(gift => [
+      gift.id ?? '',
+      gift.name ?? '',
+      gift.description ?? '',
       gift.isAvailable.toString(),
-      gift.selectedBy || '',
+      gift.selectedBy ?? '',
       gift.createdAt.toISOString()
     ])];
 
