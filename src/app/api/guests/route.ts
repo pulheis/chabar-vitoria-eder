@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getGuests, addGuest, deleteGuest, updateGuest } from '@/lib/storage';
+import { sendWhatsAppNotification } from '@/lib/twilio';
 import { Guest } from '@/types';
 
 export async function GET() {
@@ -26,6 +27,23 @@ export async function POST(request: NextRequest) {
     const guestId = await addGuest(guestData);
     const guests = await getGuests();
     const newGuest = guests.find((g: Guest) => g.id === guestId);
+
+    // Enviar notificação via WhatsApp Twilio (não bloquear se falhar)
+    try {
+      const notificationResult = await sendWhatsAppNotification({
+        name: guestData.name,
+        isAttending: guestData.isAttending,
+        companions: guestData.companions || 0,
+        willBringGift: guestData.willBringGift || false,
+        selectedGift: guestData.selectedGift || '',
+        message: guestData.message || ''
+      });
+      
+      console.log('Resultado da notificação WhatsApp:', notificationResult);
+    } catch (notificationError) {
+      console.error('Erro ao enviar notificação WhatsApp (não crítico):', notificationError);
+      // Não falhar a requisição se a notificação falhar
+    }
 
     // Garantir que as datas sejam serializáveis
     const serializedGuest = newGuest ? {
