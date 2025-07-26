@@ -277,7 +277,8 @@ class GoogleSheetsService {
     const rows = await this.readSheet(SHEETS.CONFIG);
     if (rows.length <= 1) return false;
 
-    const configRow = rows.find(row => row[0] === username);
+    // Fazer busca case-insensitive
+    const configRow = rows.find(row => row[0]?.toLowerCase() === username.toLowerCase());
     return !!(configRow && configRow[1] === password);
   }
 
@@ -321,8 +322,9 @@ class GoogleSheetsService {
       // Inicializar aba de Configurações com os dois usuários
       const configRows = [
         CONFIG_HEADERS,
-        ['Eder', 'Noivo!', new Date().toISOString()],
-        ['Vitoria', 'Noiva!', new Date().toISOString()]
+        ['eder', 'Noivo!', new Date().toISOString()],
+        ['vitoria', 'Noiva!', new Date().toISOString()],
+        ['noivos', 'voucasar2025', new Date().toISOString()]
       ];
       
       await this.writeSheet(SHEETS.CONFIG, configRows);
