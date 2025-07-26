@@ -10,10 +10,16 @@ if curl -s http://localhost:3000 > /dev/null; then
     curl -s http://localhost:3000/api/sheets?action=test
     
     echo ""
-    echo "🔐 Testando login..."
+    echo "🔐 Testando login com Eder..."
     curl -s -X POST http://localhost:3000/api/sheets \
       -H "Content-Type: application/json" \
-      -d '{"action":"test-login","username":"noivos","password":"voucasar2025"}'
+      -d '{"action":"test-login","username":"Eder","password":"Noivo!"}'
+    
+    echo ""
+    echo "🔐 Testando login com Vitoria..."
+    curl -s -X POST http://localhost:3000/api/sheets \
+      -H "Content-Type: application/json" \
+      -d '{"action":"test-login","username":"Vitoria","password":"Noiva!"}'
     
     echo ""
     echo "🚀 Inicializando planilhas..."

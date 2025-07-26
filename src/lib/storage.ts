@@ -3,37 +3,54 @@ import googleSheetsService from './google-sheets';
 import * as fileStorage from './file-storage';
 
 // Configuração para escolher o método de persistência
-const USE_GOOGLE_SHEETS = process.env.GOOGLE_SHEETS_PRIVATE_KEY && 
-                          process.env.GOOGLE_SHEETS_CLIENT_EMAIL && 
-                          process.env.GOOGLE_SPREADSHEET_ID;
+const USE_GOOGLE_SHEETS = () => {
+  const hasPrivateKey = !!process.env.GOOGLE_SHEETS_PRIVATE_KEY;
+  const hasClientEmail = !!process.env.GOOGLE_SHEETS_CLIENT_EMAIL;
+  const hasSpreadsheetId = !!process.env.GOOGLE_SPREADSHEET_ID;
+  
+  const shouldUseSheets = hasPrivateKey && hasClientEmail && hasSpreadsheetId;
+  
+  // Log para debug (será removido após deploy)
+  if (process.env.NODE_ENV !== 'production') {
+    console.log('🔍 Storage Detection:', {
+      hasPrivateKey,
+      hasClientEmail,
+      hasSpreadsheetId,
+      shouldUseSheets,
+      nodeEnv: process.env.NODE_ENV
+    });
+  }
+  
+  return shouldUseSheets;
+};
 
 // ===============================
 // FUNÇÕES PARA CONVIDADOS
 // ===============================
 
 export const getGuests = async (): Promise<Guest[]> => {
-  if (USE_GOOGLE_SHEETS) {
+  if (USE_GOOGLE_SHEETS()) {
     return await googleSheetsService.getGuests();
   }
   return fileStorage.getGuests();
 };
 
 export const addGuest = async (guestData: Omit<Guest, 'id' | 'createdAt'>): Promise<string> => {
-  if (USE_GOOGLE_SHEETS) {
+  if (USE_GOOGLE_SHEETS()) {
     return await googleSheetsService.addGuest(guestData);
   }
   return fileStorage.addGuest(guestData);
 };
 
 export const updateGuest = async (id: string, updates: Partial<Guest>): Promise<boolean> => {
-  if (USE_GOOGLE_SHEETS) {
+  if (USE_GOOGLE_SHEETS()) {
     return await googleSheetsService.updateGuest(id, updates);
   }
   return fileStorage.updateGuest(id, updates);
 };
 
 export const deleteGuest = async (id: string): Promise<boolean> => {
-  if (USE_GOOGLE_SHEETS) {
+  if (USE_GOOGLE_SHEETS()) {
     return await googleSheetsService.deleteGuest(id);
   }
   return fileStorage.deleteGuest(id);
@@ -44,7 +61,7 @@ export const deleteGuest = async (id: string): Promise<boolean> => {
 // ===============================
 
 export const getGifts = async (): Promise<Gift[]> => {
-  if (USE_GOOGLE_SHEETS) {
+  if (USE_GOOGLE_SHEETS()) {
     return await googleSheetsService.getGifts();
   }
   return fileStorage.getGifts();
@@ -56,21 +73,21 @@ export const getAvailableGifts = async (): Promise<Gift[]> => {
 };
 
 export const addGift = async (giftData: Omit<Gift, 'id' | 'createdAt'>): Promise<string> => {
-  if (USE_GOOGLE_SHEETS) {
+  if (USE_GOOGLE_SHEETS()) {
     return await googleSheetsService.addGift(giftData);
   }
   return fileStorage.addGift(giftData);
 };
 
 export const updateGift = async (id: string, updates: Partial<Gift>): Promise<boolean> => {
-  if (USE_GOOGLE_SHEETS) {
+  if (USE_GOOGLE_SHEETS()) {
     return await googleSheetsService.updateGift(id, updates);
   }
   return fileStorage.updateGift(id, updates);
 };
 
 export const deleteGift = async (id: string): Promise<boolean> => {
-  if (USE_GOOGLE_SHEETS) {
+  if (USE_GOOGLE_SHEETS()) {
     return await googleSheetsService.deleteGift(id);
   }
   return fileStorage.deleteGift(id);
@@ -113,12 +130,26 @@ export const releaseAllGiftsFromGuest = async (guestName: string): Promise<numbe
 // ===============================
 
 export const validateLogin = async (username: string, password: string): Promise<boolean> => {
-  if (USE_GOOGLE_SHEETS) {
-    return await googleSheetsService.validateLogin(username, password);
+  // Primeiro tentar Google Sheets
+  if (USE_GOOGLE_SHEETS()) {
+    try {
+      return await googleSheetsService.validateLogin(username, password);
+    } catch (error) {
+      console.error('Google Sheets validation failed, using fallback:', error);
+    }
   }
   
-  // Fallback para validação local
-  return username.toLowerCase() === 'noivos' && password === 'voucasar2025';
+  // Fallback local SEMPRE funcional - credenciais garantidas
+  const validCredentials = [
+    { username: 'eder', password: 'Noivo!' },
+    { username: 'vitoria', password: 'Noiva!' },
+    // Manter credenciais antigas como backup temporário
+    { username: 'noivos', password: 'voucasar2025' }
+  ];
+  
+  return validCredentials.some(cred => 
+    cred.username === username.toLowerCase() && cred.password === password
+  );
 };
 
 // ===============================
@@ -126,7 +157,7 @@ export const validateLogin = async (username: string, password: string): Promise
 // ===============================
 
 export const initializeDefaultGifts = async (): Promise<{ success: boolean; message: string }> => {
-  if (USE_GOOGLE_SHEETS) {
+  if (USE_GOOGLE_SHEETS()) {
     return await googleSheetsService.initializeSheets();
   }
   return fileStorage.initializeDefaultGifts();
@@ -154,7 +185,7 @@ export const getStats = async () => {
     selectedGifts: selectedGifts.length,
     messagesCount: guestsWithMessages.length,
     lastUpdate: new Date(),
-    storageType: USE_GOOGLE_SHEETS ? 'Google Sheets' : 'Local Files'
+    storageType: USE_GOOGLE_SHEETS() ? 'Google Sheets' : 'Local Files'
   };
 };
 
@@ -173,7 +204,7 @@ export const exportData = async () => {
     stats,
     exportDate: new Date(),
     version: '2.0',
-    storageType: USE_GOOGLE_SHEETS ? 'Google Sheets' : 'Local Files'
+    storageType: USE_GOOGLE_SHEETS() ? 'Google Sheets' : 'Local Files'
   };
 };
 

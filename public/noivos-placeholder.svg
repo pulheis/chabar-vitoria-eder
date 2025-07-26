@@ -1,0 +1,73 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fundo circular com gradiente tropical -->
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#87CEEB;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#228B22;stop-opacity:1" />
+    </radialGradient>
+    <linearGradient id="dress" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#F0F8FF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E6E6FA;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Fundo circular -->
+  <circle cx="100" cy="100" r="100" fill="url(#bg)"/>
+  
+  <!-- Folhagem decorativa -->
+  <path d="M20 60 Q30 50 40 60 Q35 70 20 60" fill="#228B22" opacity="0.7"/>
+  <path d="M160 40 Q170 30 180 40 Q175 50 160 40" fill="#32CD32" opacity="0.8"/>
+  <path d="M30 140 Q40 130 50 140 Q45 150 30 140" fill="#228B22" opacity="0.6"/>
+  <path d="M150 160 Q160 150 170 160 Q165 170 150 160" fill="#32CD32" opacity="0.7"/>
+  
+  <!-- Casal -->
+  <g transform="translate(100, 100)">
+    <!-- Noiva (esquerda) -->
+    <g transform="translate(-25, -10)">
+      <!-- Véu -->
+      <path d="M-5 -25 Q0 -35 15 -30 Q20 -25 15 -20" fill="#FFFFFF" opacity="0.8"/>
+      <!-- Cabeça -->
+      <circle cx="0" cy="-20" r="12" fill="#F4A460"/>
+      <!-- Cabelo -->
+      <path d="M-10 -25 Q0 -35 10 -25 Q8 -15 -8 -15" fill="#8B4513"/>
+      <!-- Óculos -->
+      <rect x="-8" y="-22" width="16" height="6" fill="none" stroke="#000" stroke-width="1" rx="3"/>
+      <!-- Vestido -->
+      <path d="M-12 0 Q0 -5 12 0 L10 25 L-10 25 Z" fill="url(#dress)"/>
+      <!-- Cinto -->
+      <rect x="-10" y="0" width="20" height="3" fill="#4B0082"/>
+      <!-- Braços -->
+      <circle cx="-15" cy="5" r="4" fill="#F4A460"/>
+      <circle cx="15" cy="5" r="4" fill="#F4A460"/>
+    </g>
+    
+    <!-- Noivo (direita) -->
+    <g transform="translate(25, -10)">
+      <!-- Cabeça -->
+      <circle cx="0" cy="-20" r="12" fill="#F4A460"/>
+      <!-- Cabelo/barba -->
+      <path d="M-10 -25 Q0 -35 10 -25 Q8 -15 -8 -15" fill="#2F4F4F"/>
+      <path d="M-8 -15 Q0 -10 8 -15 Q8 -8 -8 -8" fill="#2F4F4F"/>
+      <!-- Óculos -->
+      <rect x="-8" y="-22" width="16" height="6" fill="#FFD700" opacity="0.8" rx="3"/>
+      <!-- Camisa listrada -->
+      <rect x="-12" y="0" width="24" height="25" fill="#FFFFFF"/>
+      <rect x="-12" y="2" width="24" height="2" fill="#000"/>
+      <rect x="-12" y="6" width="24" height="2" fill="#000"/>
+      <rect x="-12" y="10" width="24" height="2" fill="#000"/>
+      <rect x="-12" y="14" width="24" height="2" fill="#000"/>
+      <rect x="-12" y="18" width="24" height="2" fill="#000"/>
+      <rect x="-12" y="22" width="24" height="2" fill="#000"/>
+      <!-- Blazer -->
+      <path d="M-15 0 L-12 0 L-12 25 L-15 25 Z" fill="#2F4F4F"/>
+      <path d="M12 0 L15 0 L15 25 L12 25 Z" fill="#2F4F4F"/>
+      <!-- Braços -->
+      <circle cx="-18" cy="5" r="4" fill="#F4A460"/>
+      <circle cx="18" cy="5" r="4" fill="#F4A460"/>
+    </g>
+  </g>
+  
+  <!-- Decoração de palmeiras -->
+  <path d="M10 180 Q15 170 20 180 Q15 190 10 180" fill="#228B22"/>
+  <path d="M180 20 Q185 10 190 20 Q185 30 180 20" fill="#32CD32"/>
+</svg>

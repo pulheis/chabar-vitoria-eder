@@ -49,29 +49,56 @@ Auto-Deploy: Yes
 
 ## 🔑 **PASSO 4: Configurar Variáveis de Ambiente**
 
-### 4.1 No painel do Render, vá em "Environment"
+### 4.1 No painel do Render:
+1. **Após criar o Web Service**, você verá a página de configuração
+2. **Role para baixo** até a seção "Environment Variables"
+3. **OU** vá na aba "Environment" (se já criou o serviço)
 
-### 4.2 Adicionar as 3 variáveis obrigatórias:
+### 4.2 Adicionar uma por vez (clique em "Add Environment Variable"):
+
+⚠️ **IMPORTANTE**: Não crie grupos! Adicione as variáveis diretamente na lista principal.
 
 #### **GOOGLE_SHEETS_PRIVATE_KEY**
 ```
------BEGIN PRIVATE KEY-----
+Key: GOOGLE_SHEETS_PRIVATE_KEY
+Value: -----BEGIN PRIVATE KEY-----
 [SUA_CHAVE_PRIVADA_COMPLETA_AQUI]
 -----END PRIVATE KEY-----
 ```
-⚠️ **IMPORTANTE**: Incluir as quebras de linha `\n`
+⚠️ **IMPORTANTE**: Cole a chave COMPLETA, incluindo BEGIN/END
 
 #### **GOOGLE_SHEETS_CLIENT_EMAIL**
 ```
-chabar-sheets-service@seu-projeto.iam.gserviceaccount.com
+Key: GOOGLE_SHEETS_CLIENT_EMAIL
+Value: chabar-sheets-service@seu-projeto.iam.gserviceaccount.com
 ```
 
 #### **GOOGLE_SPREADSHEET_ID**
 ```
-1QST7YS_OZzU9Cy9X-73Y9XI4O9fcnDISf4u4HADzAPA
+Key: GOOGLE_SPREADSHEET_ID
+Value: 1QST7YS_OZzU9Cy9X-73Y9XI4O9fcnDISf4u4HADzAPA
 ```
 
-### 4.3 Como pegar essas informações
+### 4.3 Passo a passo visual no Render:
+
+```
+1. Na página do seu serviço:
+   [Environment Variables]
+   
+2. Clique: "Add Environment Variable"
+   
+3. Preencha:
+   Key: GOOGLE_SHEETS_PRIVATE_KEY
+   Value: [cole a chave privada completa]
+   
+4. Clique: "Add"
+
+5. Repita para as outras 2 variáveis
+
+6. Total: 3 variáveis na lista (não em grupos)
+```
+
+### 4.4 Como pegar essas informações
 
 Do seu arquivo `.env.local`:
 ```bash

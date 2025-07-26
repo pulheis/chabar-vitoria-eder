@@ -318,10 +318,11 @@ class GoogleSheetsService {
 
       await this.writeSheet(SHEETS.GIFTS, giftRows);
       
-      // Inicializar aba de Configurações
+      // Inicializar aba de Configurações com os dois usuários
       const configRows = [
         CONFIG_HEADERS,
-        ['noivos', 'voucasar2025', new Date().toISOString()]
+        ['Eder', 'Noivo!', new Date().toISOString()],
+        ['Vitoria', 'Noiva!', new Date().toISOString()]
       ];
       
       await this.writeSheet(SHEETS.CONFIG, configRows);

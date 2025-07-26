@@ -18,13 +18,31 @@ export default function LoginForm({ onLogin }: LoginProps) {
     setLoading(true);
     setError('');
 
-    // Validação simples (aceita maiúsculas e minúsculas no username)
-    if (credentials.username.toLowerCase() === 'noivos' && credentials.password === 'voucasar2025') {
-      // Salvar no localStorage para manter sessão
-      localStorage.setItem('chabar_admin_auth', 'true');
-      onLogin();
-    } else {
-      setError('Usuário ou senha incorretos');
+    try {
+      // Chamar API de validação que usa Google Sheets
+      const response = await fetch('/api/auth/validate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: credentials.username,
+          password: credentials.password
+        })
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.valid) {
+        // Salvar no localStorage para manter sessão
+        localStorage.setItem('chabar_admin_auth', 'true');
+        onLogin();
+      } else {
+        setError('Usuário ou senha incorretos');
+      }
+    } catch (error) {
+      console.error('Erro na validação:', error);
+      setError('Erro na validação. Tente novamente.');
     }
     
     setLoading(false);
