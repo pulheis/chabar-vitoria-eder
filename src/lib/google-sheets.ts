@@ -63,17 +63,26 @@ class GoogleSheetsService {
 
   private async writeSheet(sheetName: string, values: string[][]): Promise<boolean> {
     try {
-      await this.sheets.spreadsheets.values.update({
+      // Primeiro limpar a planilha
+      await this.sheets.spreadsheets.values.clear({
         spreadsheetId: GOOGLE_SPREADSHEET_ID,
         range: `${sheetName}!A:Z`,
+      });
+
+      // Depois escrever os novos dados
+      await this.sheets.spreadsheets.values.update({
+        spreadsheetId: GOOGLE_SPREADSHEET_ID,
+        range: `${sheetName}!A1`,
         valueInputOption: 'RAW',
         requestBody: {
           values,
         },
       });
+      
+      console.log(`✅ Planilha ${sheetName} atualizada com ${values.length} linhas`);
       return true;
     } catch (error) {
-      console.error(`Erro ao escrever planilha ${sheetName}:`, error);
+      console.error(`❌ Erro ao escrever planilha ${sheetName}:`, error);
       return false;
     }
   }
@@ -170,45 +179,47 @@ class GoogleSheetsService {
   }
 
   async deleteGuest(id: string): Promise<boolean> {
-    console.log('🔍 Google Sheets deleteGuest - ID to delete:', id, typeof id);
-    
-    const guests = await this.getGuests();
-    console.log('🔍 Google Sheets deleteGuest - Total guests before:', guests.length);
-    console.log('🔍 Google Sheets deleteGuest - Guest IDs:', guests.map(g => `${g.id} (${typeof g.id})`));
-    
-    const filteredGuests = guests.filter(g => {
-      const shouldKeep = g.id !== id;
-      if (!shouldKeep) {
-        console.log('🔍 Found guest to delete:', g.id, g.name);
+    try {
+      console.log(`�️ Deletando convidado com ID: ${id}`);
+      
+      const guests = await this.getGuests();
+      const initialCount = guests.length;
+      
+      const filteredGuests = guests.filter(g => g.id !== id);
+      
+      if (filteredGuests.length === initialCount) {
+        console.log(`❌ Convidado com ID ${id} não encontrado`);
+        return false;
       }
-      return shouldKeep;
-    });
-    
-    console.log('🔍 Google Sheets deleteGuest - Total guests after filter:', filteredGuests.length);
-    
-    if (filteredGuests.length === guests.length) {
-      console.log('🔍 Google Sheets deleteGuest - No guest was filtered out (not found)');
+
+      // Reescrever a planilha completa sem o convidado deletado
+      const rows: string[][] = [GUEST_HEADERS, ...filteredGuests.map(guest => [
+        guest.id ?? '',
+        guest.name ?? '',
+        guest.rg ?? '',
+        guest.licensePlate ?? '',
+        guest.isAttending.toString(),
+        guest.companions?.toString() ?? '0',
+        guest.willBringGift.toString(),
+        guest.selectedGift ?? '',
+        JSON.stringify(guest.selectedGifts ?? []),
+        guest.message ?? '',
+        guest.createdAt.toISOString()
+      ])];
+
+      const success = await this.writeSheet(SHEETS.GUESTS, rows);
+      
+      if (success) {
+        console.log(`✅ Convidado deletado! Total: ${initialCount} → ${filteredGuests.length}`);
+      } else {
+        console.log(`❌ Falha ao deletar convidado do Google Sheets`);
+      }
+      
+      return success;
+    } catch (error) {
+      console.error('❌ Erro ao deletar convidado:', error);
       return false;
     }
-
-    const rows: string[][] = [GUEST_HEADERS, ...filteredGuests.map(guest => [
-      guest.id ?? '',
-      guest.name ?? '',
-      guest.rg ?? '',
-      guest.licensePlate ?? '',
-      guest.isAttending.toString(),
-      guest.companions?.toString() ?? '0',
-      guest.willBringGift.toString(),
-      guest.selectedGift ?? '',
-      JSON.stringify(guest.selectedGifts ?? []),
-      guest.message ?? '',
-      guest.createdAt.toISOString()
-    ])];
-
-    const writeResult = await this.writeSheet(SHEETS.GUESTS, rows);
-    console.log('🔍 Google Sheets deleteGuest - Write result:', writeResult);
-    
-    return writeResult;
   }
 
   // ===============================
